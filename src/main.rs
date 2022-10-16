@@ -1,3 +1,6 @@
+mod commands;
+
+use clap::Parser;
 use crossterm::{
     execute,
     style::{Color, Print, ResetColor, SetBackgroundColor},
@@ -7,7 +10,13 @@ use std::io::stdout;
 use std::path::Path;
 
 fn main() -> Result<(), ()> {
-    let path = Path::new("./examples/cat.jpeg");
+    let matches = commands::Args::parse();
+    let file = matches.file;
+
+    // let config = file.unwrap(); //matches.value_of("config").unwrap_or("default.conf");
+    println!("Value for config: {:?}", file);
+
+    let path = file.unwrap(); //Path::new("./examples/cat.jpeg");
 
     let img = image::open(path).unwrap();
     let (width, height) = img.dimensions();
