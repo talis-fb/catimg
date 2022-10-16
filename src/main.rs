@@ -1,14 +1,15 @@
-use image::GenericImageView;
-use std::io::stdout;
-
 use crossterm::{
     execute,
     style::{Color, Print, ResetColor, SetBackgroundColor},
 };
+use image::GenericImageView;
+use std::io::stdout;
+use std::path::Path;
 
-fn main() {
-    // Read the image and process dimensions
-    let img = image::open("/home/talison/projects/rust/images/examples/cat.jpeg").unwrap();
+fn main() -> Result<(), ()> {
+    let path = Path::new("./examples/cat.jpeg");
+
+    let img = image::open(path).unwrap();
     let (width, height) = img.dimensions();
 
     for i in 0..height {
