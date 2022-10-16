@@ -14,7 +14,7 @@ fn main() -> Result<(), ()> {
 
     for i in 0..height {
         for j in 0..width {
-            let pixel = img.get_pixel(i, j);
+            let pixel = img.get_pixel(j, i);
             let r = pixel[0];
             let g = pixel[1];
             let b = pixel[2];
