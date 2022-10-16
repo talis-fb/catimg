@@ -4,10 +4,10 @@ use std::path::PathBuf;
 // Simple program to greet a person
 
 #[derive(Parser, Debug)]
-#[command(author, version, about, long_about = None)]
+#[command(name = "catimg", author, version, about, long_about = None)] // Get info in Cargo.toml
 pub struct Args {
     /// Name of the person to greet
-    #[arg(short, long)]
+    #[command()]
     pub file: Option<PathBuf>,
 }
 
